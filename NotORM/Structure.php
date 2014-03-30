@@ -94,7 +94,7 @@ class NotORM_Structure_Convention implements NotORM_Structure {
 		if ($this->table != '%s' && preg_match('(^' . str_replace('%s', '(.*)', preg_quote($this->table)) . '$)', $name, $match)) {
 			return $match[1];
 		}
-		return $name;
+		return preg_replace(sprintf('/^%s/', preg_quote($this->prefix)), '', $name);
 	}
 	
 }
